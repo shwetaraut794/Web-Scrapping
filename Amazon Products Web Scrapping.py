@@ -26,6 +26,7 @@ def extract(page):
     return soup
 
 def transform(soup):
+    baseurl = 'https://www.amazon.com/'
     info = soup.find_all('div', class_ = 'zg-grid-general-faceout')
     for items in info:
         title = items.find('div', class_ = ['_cDEzb_p13n-sc-css-line-clamp-3_g3dy1','_cDEzb_p13n-sc-css-line-clamp-4_2q2cc']).text.strip()
@@ -40,7 +41,7 @@ def transform(soup):
         except:
             numberofreviews = 'Not Provided'
         links = items.find('a', class_ = 'a-link-normal').get('href')
-        link =  'https://www.amazon.com/' + links
+        link =  baseurl + links
         #print(link)
     
         products = {
@@ -67,8 +68,6 @@ print(df.head())
 
 df.to_csv('Amazon products.csv')
 
-
-# In[ ]:
 
 
 
