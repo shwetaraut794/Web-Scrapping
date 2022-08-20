@@ -32,7 +32,7 @@ def transform(soup):
         title = items.find('div', class_ = ['_cDEzb_p13n-sc-css-line-clamp-3_g3dy1','_cDEzb_p13n-sc-css-line-clamp-4_2q2cc']).text.strip()
         price = items.find('span', class_ ='_cDEzb_p13n-sc-price_3mJ9Z')
         #print(price)
-        try:
+        try:   #exception handling
             stars = items.find('div', class_ ='a-row').find('span', class_ = 'a-icon-alt').text.strip()
         except:
             stars = 'Not Provided'
@@ -44,7 +44,7 @@ def transform(soup):
         link =  baseurl + links
         #print(link)
     
-        products = {
+        products = {                                                                   #created a data structure (lists of dict)
                 'Product Name' : title,
                 'Product Price' : price,
                 'Stars' : stars,
